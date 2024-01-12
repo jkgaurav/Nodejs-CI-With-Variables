@@ -1,0 +1,20 @@
+name: CI with Variables and Secrets
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      GREETING_MESSAGE: 'Hello from Environment Variable'
+
+    steps:
+    - uses: actions/checkout@v2
+      
+    - name: Print Environment Variable
+      run: echo $GREETING_MESSAGE
+
+    - name: Use Secret
+      run: |
+        echo "Secret API Key: ${{ secrets.API_KEY }}"
